@@ -2,7 +2,7 @@ import {catchAsyncError} from "../middlewares/catchAsyncError.js";
 import ErrorHandler from "../utils/ErrorHandler.js";
 import User from "../models/User.js"
 import { sendToken } from "../utils/sendToken.js";
-
+import { sendEmail } from "../utils/sendEmail.js";
 export const register = catchAsyncError(async(req,res,next) =>{
     const {name,email,password} = req.body;
 
@@ -75,3 +75,29 @@ export const changePassword = catchAsyncError(async(req,res,next)=>{
     })
 })
 
+export const forgetPassword = catchAsyncError(async(req,res,next)=>{
+    const {email} = req.body;
+    const user = await User.findOne({email});
+
+    if(!user){
+        console.log("User not found");
+        return next(new ErrorHandler("User Not Found",400));
+    }
+    console.log("User found",user);
+    const resetToken = await user.getResetToken();
+    console.log("Reset token:", resetToken);
+
+    await user.save();
+    const url = `${process.env.Frontend_URL}/resetpassword/${resetToken}`;
+    console.log("Reset URL:",url);
+
+    const message = `Click on the link to reset your password :${url}. If your have not requested this, please ignore it.`;
+
+    await sendEmail(user.email, "CourseBundler Reset Password", message);
+    console.log("Email Sent to:" , user.email);
+
+    res.status(200).json({
+        success:true,
+        message:`Reset Token has been sent to ${user.email}`,
+    });
+});
