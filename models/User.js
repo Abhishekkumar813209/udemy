@@ -1,5 +1,8 @@
 import  mongoose from "mongoose"
 import validator from "validator"
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+
 const userSchema = new mongoose.Schema({
     name:{
         type:String,
@@ -28,11 +31,11 @@ const userSchema = new mongoose.Schema({
     avatar:{
         public_id:{
             type:String,
-            required:true,
+            // required:true,
         },
         url:{
             type:String,
-            required:true
+            // required:true
         },
     },
     playlist:[
@@ -51,6 +54,17 @@ const userSchema = new mongoose.Schema({
     resetPasswordToken:String,
     resetPasswordExpire:Date
 })
+
+userSchema.pre("save",async function(next){
+    if(!this.isModified("password")) return next();
+    this.password = await bcrypt.hash(this.password,10);
+    next();
+})
+
+userSchema.methods.getJWTToken = function () {
+    return jwt.sign({ _id: this._id }, process.env.JWT_SECRET, { expiresIn: "15d" });
+  };
+
 
 
 export default mongoose.model("User",userSchema);
