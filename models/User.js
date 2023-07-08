@@ -24,5 +24,30 @@ const userSchema = new mongoose.Schema({
     subscription:{
         id:String,
         status:String
-    }
+    },
+    avatar:{
+        public_id:{
+            type:String,
+            required:true,
+        },
+        url:{
+            type:String,
+            required:true
+        },
+    },
+    playlist:[
+        {
+            course:{
+                type:mongoose.Schema.Types.ObjectId,
+                ref:"Course",
+            },
+            poster:String,
+        },
+    ],
+    createdAt:{
+        type:Date,
+        default:Date.now,
+    },
+    resetPasswordToken:String,
+    resetPasswordExpire:Date
 })
