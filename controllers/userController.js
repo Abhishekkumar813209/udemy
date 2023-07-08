@@ -3,6 +3,8 @@ import ErrorHandler from "../utils/ErrorHandler.js";
 import User from "../models/User.js"
 import { sendToken } from "../utils/sendToken.js";
 import { sendEmail } from "../utils/sendEmail.js";
+import crypto from "crypto";
+
 export const register = catchAsyncError(async(req,res,next) =>{
     const {name,email,password} = req.body;
 
@@ -101,3 +103,40 @@ export const forgetPassword = catchAsyncError(async(req,res,next)=>{
         message:`Reset Token has been sent to ${user.email}`,
     });
 });
+
+export const resetPassword = catchAsyncError(async(req,res,next)=>{
+    const {token} = req.params;
+    const resetPasswordToken = crypto
+    .createHash("sha256")
+    .update(token)
+    .digest("hex");
+
+    console.log("Hashed reset password token:" , resetPasswordToken);
+
+    const user = await User.findOne({
+        resetPasswordToken,
+        resetPasswordExpire:{
+            $gt:Date.now(),
+        },
+    })
+
+    console.log("User found:",user);
+
+    if(!user){
+        console.log("Invalid or expired Token");
+        return next(new ErrorHandler("TOken in invalid or has been expired"));
+    }
+        user.password = req.body.password;
+        user.resetPasswordToken = undefined;
+        user.resetPasswordExpire = undefined;
+
+        console.log("Updated user:" , user);
+
+        await user.save();
+
+        res.status(200).json({
+            success:true,
+            message:"Password Changed Successfully"
+        })
+    
+})
