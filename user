@@ -1,0 +1,95 @@
+[33mcommit bbde67ffa4ff3757878e78becdc33ea2ebd65ec9[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 19:57:54 2023 +0530
+
+    added reset password (remember forget and reset would work simultaneously 
+
+[33mcommit e091d20b54e9b3cd686f76b351a4ad946421d6a6[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 18:51:37 2023 +0530
+
+    ---14th commit added forgot password , token has been sent to mailtrap; --next[reset password route with token]
+
+[33mcommit eca803a2bd1bf69612bf23193ebe6c8e024a9938[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 18:09:17 2023 +0530
+
+    added changePassword
+
+[33mcommit 5b4fade808ca26c4ba9d81a061fcf235ccd823d6[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 17:02:56 2023 +0530
+
+    added getmy profile
+
+[33mcommit f371f120b7f12a517df697254a84e4fbf0ac313d[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 16:45:34 2023 +0530
+
+    completed login and logout successfully
+
+[33mcommit e73015d5f7c707f2fb1bfbfbf14d591c5c24b5d1[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 16:31:22 2023 +0530
+
+    registered successfully
+
+[33mcommit 4606d96d9fcc60de3ef1db4506d0c78028c9c8da[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 15:33:12 2023 +0530
+
+    add sendToken.js
+
+[33mcommit 883c4cf0c2295810f5bc473f451a3e879a5b44db[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 15:10:29 2023 +0530
+
+    add register login logout (route and controller)  ,[ next dataUri , sendToken]  ---9th commit
+
+[33mcommit 576c5e1faf1a66d586cd00d984f75b0c86d0488c[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 14:46:14 2023 +0530
+
+    add errorHandler-utils ,(Error.js , catchAsyncErrror)
+
+[33mcommit 5b7bb904a073d0a04ff0200cd1d5ac47d2683d0f[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 14:25:23 2023 +0530
+
+    full course model complete
+
+[33mcommit 0d57a4ed3caa0572bd2af48bd8966109867736ea[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 14:22:55 2023 +0530
+
+    half course model complete
+
+[33mcommit 55c76eb23f07f768c796afcbf6de7a51a03a24d4[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 14:17:33 2023 +0530
+
+    usermodel complete ----5th commit
+
+[33mcommit 4b031826fba4c0e4e9eeb9ab97e68809ba10d3ae[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 14:10:20 2023 +0530
+
+    half usermodel complete
+
+[33mcommit 19e12b4531d0c077c340464150b8855c1c7c675b[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 13:46:00 2023 +0530
+
+    database connected , models next  ----3rd commit
+
+[33mcommit 7128df2d6146c68ed486d86a94e3ec5ea30d16b6[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 13:38:51 2023 +0530
+
+    app and server js files initialized
+
+[33mcommit 18d727ad20d882db1832fa6da2226379ff908af0[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 13:27:27 2023 +0530
+
+    empty folder
