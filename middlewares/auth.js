@@ -15,3 +15,13 @@ export const isAuthenticated = catchAsyncError(async(req,res,next)=>{
 
     next();
 })
+
+export const authorizeAdmin = (req,res,next) =>{
+    if(req.user.role!==1)
+    return next(
+        new ErrorHandler(
+            `${req.user.role} is not allowed to access this Route` , 403
+        )
+    );
+    next();
+}

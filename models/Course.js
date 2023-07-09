@@ -35,16 +35,16 @@ const courseSchema = new mongoose.Schema({
             }
         }
     ],
-    poster:{
-        public_id:{
-            type:String,
-            required:true,
-        },
-        url:{
-            type:String,
-            required:true
-        }
-    },
+    // poster:{
+    //     public_id:{
+    //         type:String,
+    //         required:true,
+    //     },
+    //     url:{
+    //         type:String,
+    //         required:true
+    //     }
+    // },
     views:{
         type:Number,
         default:0
