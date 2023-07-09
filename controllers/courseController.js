@@ -1,7 +1,8 @@
 import Course from "../models/Course.js";
 import { catchAsyncError } from "../middlewares/catchAsyncError.js"
 import ErrorHandler from "../utils/ErrorHandler.js";
-
+import getDataUri from "../utils/dataUri.js";
+import cloudinary from 'cloudinary';
 
 export const getAllCourse = catchAsyncError(async(req,res,next)=>{
 
@@ -33,12 +34,27 @@ export const createCourse = catchAsyncError(async(req,res,next)=>{
         return next(new ErrorHandler("Please enter add all fields" ,400))
     }
 
+    const file = req.file;
+    const fileUri = getDataUri(file);
+    console.log("File URI:",fileUri);
+
     try{
+
+        const mycloud = await cloudinary.v2.uploader.upload(fileUri.content,{
+            folder:'images',timeout:60000
+        });
+        console.log("Cloudinary response:",mycloud);
+
+
         const newCourse = await Course.create({
             title,
             description,
             category,
-            createdBy
+            createdBy,
+            poster:{
+                public_id:mycloud.public_id,
+                url:mycloud.secure_url
+            },
         })
 
         console.log("New Course Created",newCourse);
@@ -52,3 +68,4 @@ export const createCourse = catchAsyncError(async(req,res,next)=>{
         return next(new ErrorHandler("Failed to create course"))
     }
 })
+
