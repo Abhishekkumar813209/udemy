@@ -10,11 +10,12 @@ import {
     addToPlaylist,
     removeFromPlaylist
 } from "../controllers/userController.js"
+import singleUpload from "../middlewares/multer.js";
 import {isAuthenticated} from "../middlewares/auth.js"
 const router = express.Router();
 
 //Register Route
-router.route("/register").post(register);
+router.route("/register").post(singleUpload,register);
 
 //Login Route
 router.route("/login").post(login);

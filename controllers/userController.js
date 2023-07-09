@@ -5,9 +5,16 @@ import { sendToken } from "../utils/sendToken.js";
 import { sendEmail } from "../utils/sendEmail.js";
 import crypto from "crypto";
 import Course from "../models/Course.js";
+import {response} from "express";
+import cloudinary from "cloudinary"
+import getDataUri from "../utils/dataUri.js"
+
 
 export const register = catchAsyncError(async(req,res,next) =>{
     const {name,email,password} = req.body;
+    console.log(name);
+    console.log(email);
+    console.log(password);
 
     if(!email || !password || !name) return next (new ErrorHandler("please enter all field" , 400));
 
@@ -16,13 +23,18 @@ export const register = catchAsyncError(async(req,res,next) =>{
     
 
     //Upload file on cloudinary
-    
-
+    const file = req.file;
+    const fileUri = getDataUri(file);
+    const mycloud = await cloudinary.v2.uploader.upload(fileUri.content)
 
     user = await User.create({
         name,
         email,
-        password
+        password,
+        avatar:{
+            public_id:mycloud.public_id,
+            url:mycloud.secure_url
+        }
     })
     sendToken(res,user,"Registered Successfully")
 })
@@ -152,7 +164,7 @@ export const addToPlaylist = catchAsyncError(async(req,res,next)=>{
 
         user.playlist.push({
             course:course._id,
-            // poster:course.poster.url,
+            poster:course.poster.url,
         })
 
         await user.save();
