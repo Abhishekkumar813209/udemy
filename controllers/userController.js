@@ -17,11 +17,9 @@ export const register = catchAsyncError(async(req,res,next) =>{
     console.log(password);
 
     if(!email || !password || !name) return next (new ErrorHandler("please enter all field" , 400));
-
     let user = await User.findOne({email})
     if(user) return next(new ErrorHandler("user Already Exists",400));
     
-
     //Upload file on cloudinary
     const file = req.file;
     const fileUri = getDataUri(file);

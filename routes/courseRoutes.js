@@ -6,7 +6,9 @@ import {
         getAllCourse,
          createCourse ,
          getCourseLectures ,
-         addLecture
+         addLecture,
+         deleteLecture,
+         deleteCourse
        } from "../controllers/courseController.js";
 import { isAuthenticated,authorizeAdmin } from "../middlewares/auth.js";
 
@@ -22,6 +24,10 @@ router
     .route("/course/:id")
     .get(isAuthenticated,getCourseLectures)
     .post(isAuthenticated,authorizeAdmin,singleUpload,addLecture)
-    // .delete(isAuthenticated,authorizeAdmin,deleteCourse);
+    .delete(isAuthenticated,authorizeAdmin,deleteCourse);
+    
+//Delete lecture
+router.route("/lecture")
+       .delete(isAuthenticated,authorizeAdmin,deleteLecture);
 
 export default router;

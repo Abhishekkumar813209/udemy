@@ -121,3 +121,66 @@ export const addLecture = catchAsyncError(async(req,res,next) =>{
     })
 })
 
+export const deleteCourse = catchAsyncError(async(req,res,next)=>{
+    console.log("Inside createCourse");
+
+    const {id} = req.params;
+
+    const course = await Course.findById(id);
+
+    if(!course){
+        return next(new ErrorHandler("Course Not found",404));
+    }
+    
+    if(course.poster && course.poster.public_id){
+        await cloudinary.v2.uploader.destroy(course.poster.public_id);
+    }
+
+    for(let i=0;i<course.lectures.length ; i++){
+        course.lecture = course.lectures[i];
+        if(lecture.video&& lecture.video.public_id){
+            await cloudinary.v2.uploader.destroy(lecture.video.public_id,{
+                resource_type:"Video"
+            });
+        }
+    }
+
+    await course.deleteOne({_id:id});
+    res.status(200).json({
+        success:true,
+        message:"Course deleted Successfully"
+    })
+})
+
+export const deleteLecture = catchAsyncError(async(req,res,next)=>{
+    const {courseId,lectureId} = req.query;
+
+    const course = await Course.findById(courseId);
+
+    if(!course){
+        return next(new ErrorHandler("Course not found",404))
+    }
+
+    const lecture = course.lectures.find((item)=>{
+        if(item._id.toString() ===lectureId.toString()) return item;
+    });
+
+    await cloudinary.v2.uploader.destroy(lecture.video.public_id,{
+        resource_type:"video"
+    })
+
+    course.lectures = course.lectures.filter(item=>{
+        if(item._id.toString()!== lectureId.toString()) return item;
+    })
+
+    course.numOfVideos = course.lectures.length;
+
+    await course.save();
+
+    res.status(200).json({
+        success:true,
+        message:"Lecture Deleted Successfully"
+    })
+
+})
+
