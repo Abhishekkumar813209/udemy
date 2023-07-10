@@ -43,8 +43,6 @@ router.route("/addtoplaylist").post(isAuthenticated,addToPlaylist);
 //Remove from playlist
 router.route("/removefromplaylist").delete(isAuthenticated,removeFromPlaylist);
 
-
-
 //Admin Routes
 router.route("/admin/users").get(isAuthenticated,authorizeAdmin,getAllUsers)
 

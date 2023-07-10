@@ -10,7 +10,7 @@ import {
          deleteLecture,
          deleteCourse
        } from "../controllers/courseController.js";
-import { isAuthenticated,authorizeAdmin } from "../middlewares/auth.js";
+import { isAuthenticated,authorizeAdmin, authorizeSubscribers } from "../middlewares/auth.js";
 
 //Get All Courses without lectures
 router.route("/courses").get(getAllCourse);
@@ -22,7 +22,7 @@ router.route("/createcourse").post(isAuthenticated,authorizeAdmin,singleUpload,c
 // Add lectures , Delete Lectures , Get Course details
 router
     .route("/course/:id")
-    .get(isAuthenticated,getCourseLectures)
+    .get(isAuthenticated,authorizeSubscribers,getCourseLectures)
     .post(isAuthenticated,authorizeAdmin,singleUpload,addLecture)
     .delete(isAuthenticated,authorizeAdmin,deleteCourse);
     

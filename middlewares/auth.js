@@ -25,3 +25,10 @@ export const authorizeAdmin = (req,res,next) =>{
     );
     next();
 }
+
+export const authorizeSubscribers = (req, res, next) => {
+    if (req.user.subscription.status !== "active" && req.user.role !== 1) {
+      return next(new ErrorHandler("Only Subscribers can access this course"));
+    }
+    next();
+}

@@ -7,16 +7,16 @@ import Payment from "../models/Payment.js"
 
 export const buySubscription = catchAsyncError(async(req,res,next)=>{
     const user = await User.findById(req.user._id);
-
-
     if(user.role ===1) return next(new ErrorHandler("Admin Can't buy Subscription",401))
 
     //var instance = new Razorpay({ key_id :'YOUR_KEY',key_secret:'YOUR_SECRET'})
     const plan_id = process.env.PLAN_ID;
+    console.log(plan_id)
 
     const subscription = await instance.subscriptions.create({
         plan_id,
         customer_notify:1,
+        quantity:1,
         total_count:12,
     })
 
@@ -44,7 +44,6 @@ export const paymentVerification = catchAsyncError(async(req,res,next)=>{
     const isAuthentic = generated_signature === razorpay_signature;
     
     if(!isAuthentic) return res.redirect(`${process.env.FRONTEND_URL}/paymentfailed`);
-
     // database comes here
     await Payment.create({
         razorpay_signature,
@@ -52,7 +51,7 @@ export const paymentVerification = catchAsyncError(async(req,res,next)=>{
         razorpay_subscription_id
     })
 
-    user.subscription.status=1;
+    user.subscription.status="active";
 
     await user.save();
 
@@ -74,8 +73,9 @@ export const cancelSubscription = catchAsyncError(async (req, res, next) => {
       const user = await User.findById(req.user._id);
   
       const subscriptionId = user.subscription.id;
-  
-      await instance.subscriptions.cancel(subscriptionId);
+        let refund = false;
+        
+        await instance.subscriptions.cancel(subscriptionId);
   
     //   const payment = await Payment.findOne({
     //     razorpay_subscription_id: subscriptionId,

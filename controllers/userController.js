@@ -12,9 +12,6 @@ import getDataUri from "../utils/dataUri.js"
 
 export const register = catchAsyncError(async(req,res,next) =>{
     const {name,email,password} = req.body;
-    console.log(name);
-    console.log(email);
-    console.log(password);
 
     if(!email || !password || !name) return next (new ErrorHandler("please enter all field" , 400));
     let user = await User.findOne({email})
@@ -67,6 +64,7 @@ export const getMyProfile = catchAsyncError(async(req,res,next)=>{
     res.status(200).json({
         success:true,
         user
+        
     })
 })
 
