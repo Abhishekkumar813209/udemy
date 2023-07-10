@@ -25,8 +25,14 @@ const userSchema = new mongoose.Schema({
         default:0
     },
     subscription:{
-        id:String,
-        status:String
+        id:{
+            type:String
+        },
+        status:{
+            type:Number,
+            enum:[0,1],
+            default:0
+        }
     },
     avatar:{
         public_id:{
