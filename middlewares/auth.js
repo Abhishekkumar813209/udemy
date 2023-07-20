@@ -9,11 +9,15 @@ export const isAuthenticated = catchAsyncError(async(req,res,next)=>{
 
     if(!token) return next (new ErrorHandler("Not Logged In"));
 
-    const decoded = jwt.verify(token,process.env.JWT_SECRET)
-
-    req.user = await User.findById(decoded._id);
-
-    next();
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        req.user = await User.findById(decoded._id);
+        next();
+    } catch (error) {
+        // Handle the JWT verification error here
+        console.error('JWT Verification Error:', error.message);
+        next(new ErrorHandler("Invalid Token"));
+    }
 })
 
 export const authorizeAdmin = (req,res,next) =>{

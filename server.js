@@ -8,7 +8,7 @@ import Razorpay from "razorpay";
 connectDB()
 
 app.get("/",(req,res)=>{
-    res.send("Hello this is the homepage");
+    res.send('Hello this is the homepage <a href="http://localhost:3000"> Click here</a> ');
 })
 
 // const socket = new net.Socket();
