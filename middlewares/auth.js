@@ -14,7 +14,8 @@ export const isAuthenticated = catchAsyncError(async(req,res,next)=>{
         req.user = await User.findById(decoded._id);
         next();
     } catch (error) {
-        // Handle the JWT verification error here
+        // Handle the JWT verification error here4
+        console.log(error)
         console.error('JWT Verification Error:', error.message);
         next(new ErrorHandler("Invalid Token"));
     }
