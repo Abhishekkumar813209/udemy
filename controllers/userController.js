@@ -12,13 +12,13 @@ import getDataUri from "../utils/dataUri.js"
 
 export const register = catchAsyncError(async(req,res,next) =>{
     const {name,email,password} = req.body;
-
-    if(!email || !password || !name) return next (new ErrorHandler("please enter all field" , 400));
+    const file = req.file;
+    if(!email || !password || !name || !file) return next (new ErrorHandler("please enter all field" , 400));
     let user = await User.findOne({email})
     if(user) return next(new ErrorHandler("user Already Exists",400));
 
     //Upload file on cloudinary
-    const file = req.file;
+    
     const fileUri = getDataUri(file);
     const mycloud = await cloudinary.v2.uploader.upload(fileUri.content)
 
@@ -71,6 +71,47 @@ export const getMyProfile = catchAsyncError(async(req,res,next)=>{
         success:true,
         user
         
+    })
+})
+
+export const updateProfile = catchAsyncError(async(req,res,next)=>{
+    const {name,email} = req.body;
+
+    const user = await User.findById(req.user._id);
+
+    if(name) user.name = name;
+    if(email) user.email = email;
+
+    await user.save();
+
+    res.status(200).json({
+        success:true,
+        message:"Profile Update Successfully"
+    })
+})
+
+
+export const updateProfilePicture = catchAsyncError(async(req,res,next)=>{
+  
+    const file = req.file;
+
+    const user = await User.findById(req.user._id);
+
+    const fileUri = getDataUri(file);
+    const mycloud = await cloudinary.v2.uploader.upload(fileUri.content)
+
+    await cloudinary.v2.uploader.destroy(user.avatar.public_id);
+
+    user.avatar = {
+        public_id:mycloud.public_id,
+        url:mycloud.secure_url
+    }
+
+    await user.save()
+    
+    res.status(200).json({
+        success:true,
+        message:"Profile Picture updated Successsfully"
     })
 })
 

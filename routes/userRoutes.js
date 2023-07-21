@@ -10,7 +10,9 @@ import {
     addToPlaylist,
     removeFromPlaylist,
     // admin routes
-    getAllUsers
+    getAllUsers,
+    updateProfile,
+    updateProfilePicture
 } from "../controllers/userController.js"
 import singleUpload from "../middlewares/multer.js";
 import {authorizeAdmin, isAuthenticated} from "../middlewares/auth.js"
@@ -31,9 +33,15 @@ router.route("/me").get(isAuthenticated,getMyProfile);
 //ChangePassword 
 router.route("/changepassword").put(isAuthenticated,changePassword);
 
+//Update profile
+router.route("/updateprofile").put(isAuthenticated,updateProfile);
+
+//Update Profile picture
+router.route('/updateprofilepicture').put(isAuthenticated,singleUpload,updateProfilePicture);
+
 //ForgotPassword
 router.route("/forgetpassword").post(forgetPassword);
-
+ 
 //Reset Password 
 router.route("/resetpassword/:token").put(resetPassword);
 
