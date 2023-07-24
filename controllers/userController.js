@@ -242,13 +242,12 @@ export const removeFromPlaylist = catchAsyncError(async(req,res,next)=>{
 
 //Admin controllers 
 export const getAllUsers = catchAsyncError(async(req,res,next)=>{
-    const users = await User.findById(req.user._id);
+    const users = await User.find();
     res.status(200).json({
         success:true,
-        users
+        users:users
     })
 })
-
 
 
 export const updateUserRole = catchAsyncError(async(req,res,next)=>{
