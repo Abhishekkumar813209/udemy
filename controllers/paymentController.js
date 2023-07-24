@@ -5,6 +5,7 @@ import { instance } from "../server.js"
 import crypto from "crypto"
 import Payment from "../models/Payment.js"
 
+
 export const buySubscription = catchAsyncError(async(req,res,next)=>{
     const user = await User.findById(req.user._id);
     if(user.role ===1) return next(new ErrorHandler("Admin Can't buy Subscription",401))
