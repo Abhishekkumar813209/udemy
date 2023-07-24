@@ -12,10 +12,13 @@ import {
     // admin routes
     getAllUsers,
     updateProfile,
-    updateProfilePicture
+    updateProfilePicture,
+    updateUserRole,
+    deleteUser,
 } from "../controllers/userController.js"
 import singleUpload from "../middlewares/multer.js";
 import {authorizeAdmin, isAuthenticated} from "../middlewares/auth.js"
+
 const router = express.Router();
 
 //Register Route
@@ -51,10 +54,14 @@ router.route("/addtoplaylist").post(isAuthenticated,addToPlaylist);
 //Remove from playlist
 router.route("/removefromplaylist").delete(isAuthenticated,removeFromPlaylist);
 
-//Admin Routes
+//Admin Routes------------
+
 router.route("/admin/users").get(isAuthenticated,authorizeAdmin,getAllUsers)
 
 router.route("/admin/user/:id")
-
+    .get(isAuthenticated,authorizeAdmin,getAllUsers)
+    .put(isAuthenticated,authorizeAdmin,updateUserRole)
+    .delete(isAuthenticated,authorizeAdmin,deleteUser)
+ 
 
 export default router;

@@ -1,6 +1,12 @@
 import {createTransport} from "nodemailer";
-
+import ErrorHandler from "./ErrorHandler.js";
 export const sendEmail = async (to,subject,text) =>{
+
+    console.log('To:',to);
+    console.log('SUbject',subject);
+    console.log("Text",text);
+
+
 
     const transporter = createTransport({
         host:process.env.SMTP_HOST,
@@ -19,7 +25,7 @@ export const sendEmail = async (to,subject,text) =>{
         })
         console.log("Email sent successfully ");
     }catch(error){
-        console.log("Error sending email:L",error);
+        console.log("Error sending email:",error);
         throw new ErrorHandler("Failed to send email",500); //you 
     }
 

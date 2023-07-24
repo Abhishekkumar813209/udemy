@@ -8,6 +8,7 @@ import Course from "../models/Course.js";
 import {response} from "express";
 import cloudinary from "cloudinary"
 import getDataUri from "../utils/dataUri.js"
+import { Stats } from "../models/Stats.js";
 
 
 export const register = catchAsyncError(async(req,res,next) =>{
@@ -256,7 +257,6 @@ export const updateUserRole = catchAsyncError(async(req,res,next)=>{
 
     if(user.role === 0) user.role =1;
     else user.role=1;
-
     await user.save();
 
    res.status(200).json({
@@ -282,3 +282,26 @@ export const deleteUser = catchAsyncError(async(req,res,next)=>{
     })
 })
 
+User.watch().on("change",async()=>{
+    const stats = await Stats.find({}).sort({createdAt:'desc'}).limit(1);
+
+    const subscription = await User.find({"subscription.stats":"active"});
+
+    stats[0].users = await User.countDocuments();
+    stats[0].subscription = subscription.length;
+    stats[0].createdAt = new Data(Date.now());
+
+    await stats.save();
+})
+
+Course.watch().on("change",async()=>{
+    const stats = await Stats.find({}).sort({createdAt:'desc'}).limit(1);
+
+    const subscription = await User.find({"subscription.status":"active"})
+  
+   stats[0].users = await User.countDocuments();
+   stats[0].subscription = subscription.length;
+   stats[0].createdAt = new Data(Date.now());
+
+   await stats[0].save();
+})
