@@ -5,3 +5,8 @@ export const catchAsyncError = (passedFunction) =>(req,res,next) =>{
         next(err)
     }
 }
+
+// export const catchAsyncError = (passedFunction) => (req, res, next) => {
+//     Promise.resolve(passedFunction(req, res, next)).catch(next);
+//   };
+  
