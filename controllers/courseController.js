@@ -25,7 +25,7 @@ export const createCourse = catchAsyncError(async(req,res,next)=>{
         console.log("Missing fields in request");
         return next(new ErrorHandler("Please enter add all fields" ,400))
     }
-
+;
     const file = req.file;
     const fileUri = getDataUri(file);
     console.log("File URI:",fileUri);
@@ -36,7 +36,6 @@ export const createCourse = catchAsyncError(async(req,res,next)=>{
             folder:'images',timeout:60000
         });
         console.log("Cloudinary response:",mycloud);
-
 
         const newCourse = await Course.create({
             title,
@@ -124,20 +123,29 @@ export const deleteCourse = catchAsyncError(async(req,res,next)=>{
         return next(new ErrorHandler("Course Not found",404));
     }
     
-    if(course.poster && course.poster.public_id){
-        await cloudinary.v2.uploader.destroy(course.poster.public_id);
-    }
+    // if(course.poster && course.poster.public_id){
+    //     await cloudinary.v2.uploader.destroy(course.poster.public_id);
+    // }
 
-    for(let i=0;i<course.lectures.length ; i++){
-        course.lecture = course.lectures[i];
-        if(lecture.video&& lecture.video.public_id){
-            await cloudinary.v2.uploader.destroy(lecture.video.public_id,{
-                resource_type:"Video"
-            });
-        }
-    }
+    // for(let i=0;i<course.lectures.length ; i++){
+    //     course.lecture = course.lectures[i];
+    //     if(lecture.video&& lecture.video.public_id){
+    //         await cloudinary.v2.uploader.destroy(lecture.video.public_id,{
+    //             resource_type:"Video"
+    //         });
+    //     }
+    // }
 
-    await course.deleteOne({_id:id});
+    // await course.deleteOne({_id:id});
+
+    await cloudinary.v2.uploader.destroy(course.poster.public_id);
+
+    for(let i =0; i<course.lectures.length; i++){
+        const singleLecture = course.lectures[i];
+        await cloudinary.v2.uploader.destroy(singleLecture.video.public_id);
+        console.log(singleLecture.video.public_id);
+    }
+    await course.deleteOne();
     res.status(200).json({
         success:true,
         message:"Course deleted Successfully"
@@ -173,8 +181,9 @@ export const deleteLecture = catchAsyncError(async(req,res,next)=>{
         success:true,
         message:"Lecture Deleted Successfully"
     })
-
 })
+
+
 
 Course.watch().on("change",async()=>{
     const stats = await Stats.find({}).sort({createdAt:'desc'}).limit(1);

@@ -13,7 +13,6 @@ const courseSchema = new mongoose.Schema({
         minLength:[20 , "Description must be at least 20 characters long"]
     },
     lectures:[
-
         {
             title:{
                 type:String,

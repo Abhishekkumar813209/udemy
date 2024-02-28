@@ -18,7 +18,7 @@ import User from "../models/User.js";
 //         console.log(error)
 //         console.error('JWT Verification Error:', error.message);
 //         next(new ErrorHandler("Invalid Token"));
-//     }
+//     }c
 // })
 
 export const isAuthenticated = async (req, res, next) => {

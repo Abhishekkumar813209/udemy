@@ -9,10 +9,13 @@ import {
     resetPassword,
     addToPlaylist,
     removeFromPlaylist,
-    // admin routes
-    getAllUsers,
     updateProfile,
     updateProfilePicture,
+    // To add redux code for 12 functionalities
+
+
+    // admin routes
+    getAllUsers,
     updateUserRole,
     deleteUser,
 } from "../controllers/userController.js"

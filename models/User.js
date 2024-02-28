@@ -69,6 +69,7 @@ userSchema.methods.comparePassword = async function(password){
     return await bcrypt.compare(password,this.password);
 }
 
+
 userSchema.methods.getResetToken = function () {
     const resetToken = crypto.randomBytes(20).toString("hex");
   
@@ -78,11 +79,8 @@ userSchema.methods.getResetToken = function () {
       .digest("hex");
     this.resetPasswordExpire = Date.now() + 15 * 60 * 1000; // 15 minutes
   
-    console.log("Reset Token:", resetToken);
-    console.log("Hashed Reset Password Token:", this.resetPasswordToken);
-    console.log("Reset Password Expire:", this.resetPasswordExpire);
-  
     return resetToken;
   };
 
+  
 export default mongoose.model("User",userSchema);

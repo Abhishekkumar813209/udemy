@@ -7,7 +7,7 @@ import { Stats } from "./models/Stats.js";
 
 
 //database connection
-connectDB()
+connectDB();
 
 app.get("/",(req,res)=>{
     res.send('Hello this is the homepage <a href="http://localhost:3000"> Click here</a> ');

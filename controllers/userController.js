@@ -1,5 +1,5 @@
 import {catchAsyncError} from "../middlewares/catchAsyncError.js";
-import ErrorHandler from "../utils/ErrorHandler.js";
+import ErrorHandler from "../utils/errorHandler.js";
 import User from "../models/User.js"
 import { sendToken } from "../utils/sendToken.js";
 import { sendEmail } from "../utils/sendEmail.js";
@@ -41,10 +41,10 @@ export const login = catchAsyncError(async(req,res,next)=>{
     if(!email || !password) return next(new ErrorHandler("Please enter all field" , 400));
     const user = await User.findOne({email}).select("+password")
 
-    if(!user) return next(new ErrorHandler("Incorrect Email or Password" , 401));
+    if(!user) return next(new ErrorHandler("Incorrect Email " , 401));
 
     const isMatch = await user.comparePassword(password);
-    if(!isMatch) return next(new ErrorHandler("Incorrect Email or Password",401))
+    if(!isMatch) return next(new ErrorHandler("Incorrect Password",401))
 
     sendToken(res,user,`Welcome Back , ${user.name}`,200);
 })
@@ -131,6 +131,7 @@ export const changePassword = catchAsyncError(async(req,res,next)=>{
         message:"Password Changed Successfully"
     })
 })
+
 
 export const forgetPassword = catchAsyncError(async(req,res,next)=>{
     const {email} = req.body;
@@ -228,7 +229,7 @@ export const removeFromPlaylist = catchAsyncError(async(req,res,next)=>{
         if(item.course.toString()!==course._id.toString()) return item;
     })
 
-    user.playlist = newPlaylist;
+    user.playlist = newPlaylist
     await user.save();
 
     res.status(200).json({
@@ -246,7 +247,6 @@ export const getAllUsers = catchAsyncError(async(req,res,next)=>{
         users:users
     })
 })
-
 
 export const updateUserRole = catchAsyncError(async(req,res,next)=>{
     const user = await User.findById(req.params.id);
@@ -278,6 +278,11 @@ export const deleteUser = catchAsyncError(async(req,res,next)=>{
         message:"User deleted Successfully"
     })
 })
+
+
+
+
+
 
 User.watch().on("change",async()=>{
     const stats = await Stats.find({}).sort({createdAt:'desc'}).limit(1);

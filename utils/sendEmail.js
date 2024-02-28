@@ -1,5 +1,5 @@
 import {createTransport} from "nodemailer";
-import ErrorHandler from "./ErrorHandler.js";
+import ErrorHandler from "./errorHandler.js"
 export const sendEmail = async (to,subject,text) =>{
 
     console.log('To:',to);

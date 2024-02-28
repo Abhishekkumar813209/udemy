@@ -9,6 +9,8 @@ router.route("/contact").post(contact);
 //Request form 
 router.route("/courserequest").post(courseRequest);
 
+//To add redux code for 2 functionalities
+
 router.route('/admin/stats').get(isAuthenticated,authorizeAdmin,getDashboardStats);
 
 export default router;
