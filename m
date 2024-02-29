@@ -1,0 +1,246 @@
+[33mcommit 48125b1e8695980d853b179dfe326444f531bd03[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Abhishek13 <abhishek7109501@gmail.com>
+Date:   Wed Feb 28 15:39:12 2024 +0530
+
+    extra commits
+
+[33mcommit 261bf895ac8c056eeaf1badb8be0f0a39b808e67[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Wed Sep 27 23:31:05 2023 +0530
+
+    final commit
+
+[33mcommit 0b27647e2b468858e0100d91c138f010012e20bd[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Sep 23 11:44:44 2023 +0530
+
+    adding backend code
+
+[33mcommit 89f48a3ec27c5b04fafe874b366cf76e701b81b8[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Mon Jul 24 19:47:16 2023 +0530
+
+    removedregex from get all courses controller to get all courses
+
+[33mcommit 4406cd23377c271a48a0bcfc53289e63ec7eed94[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Mon Jul 24 19:23:46 2023 +0530
+
+    edited getAllUsers functions to retrieve all users
+
+[33mcommit e8befd7bb914820b40c2c27eee634b3b544f5168[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Mon Jul 24 18:30:20 2023 +0530
+
+    added dashboard code in backend and MY_mail in env file
+
+[33mcommit f84432c5e428dd06cc2ae03c3e469b43ee4953a6[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Mon Jul 24 14:10:01 2023 +0530
+
+    at 16 min of left 39th lecture
+
+[33mcommit e885e8fcd57bb3c0fa590c16becd5743b1b02518[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Fri Jul 21 13:39:03 2023 +0530
+
+    added update-profile and update-profile-picture
+
+[33mcommit 024dfcd5a49e10d3a47c404f1e09707c73567194[m
+Merge: 413087e 1346b40
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Thu Jul 20 12:51:20 2023 +0530
+
+    logout fixed
+
+[33mcommit 413087e3a57d8432d8c831add3a7d7eba7d66415[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Thu Jul 20 12:33:12 2023 +0530
+
+    logout fixed
+
+[33mcommit 2b9eec68e8b6e3d94a8c5b6e33c99c6f0ad388f1[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Thu Jul 20 12:19:27 2023 +0530
+
+    added logout functionality from frontend i think i have  done slight modification
+
+[33mcommit 1346b40718f5aa4a5df850343becfdc95b860a9a[m
+Author: Abhishekkumar813209 <97787848+Abhishekkumar813209@users.noreply.github.com>
+Date:   Tue Jul 18 22:01:16 2023 +0530
+
+    Update vercel.json
+
+[33mcommit 119bd06ee71bfe0e005b04f023b259a5541fcc7b[m
+Author: Abhishekkumar813209 <97787848+Abhishekkumar813209@users.noreply.github.com>
+Date:   Tue Jul 18 21:49:53 2023 +0530
+
+    Update vercel.json
+
+[33mcommit 0cc96cba8af9115fd616137792ee302e7294a85e[m
+Author: Abhishekkumar813209 <97787848+Abhishekkumar813209@users.noreply.github.com>
+Date:   Tue Jul 18 21:47:17 2023 +0530
+
+    Update vercel.json
+
+[33mcommit 04bd6682993588320e1cc8c46241bc20f4ab9ff0[m
+Author: Abhishekkumar813209 <97787848+Abhishekkumar813209@users.noreply.github.com>
+Date:   Tue Jul 18 21:42:22 2023 +0530
+
+    Create vercel.json
+
+[33mcommit b6277da239c1f3062e525b78d33b411125e9e020[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Mon Jul 10 20:23:31 2023 +0530
+
+    added get lectures functionality with authorizeSubscribe middleware and also added course request and contact controller
+
+[33mcommit 891ac3b4eeee6d332947e0d430db2bbacb9ae36f[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Mon Jul 10 17:32:40 2023 +0530
+
+    added cancel subscription but didn't see the response message
+
+[33mcommit 29d2252b9b96e6175d224161ef1ca77f563a8ca3[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Mon Jul 10 16:47:08 2023 +0530
+
+    added getRazorpaykey  (but still payment verification route is not complete)
+
+[33mcommit d4720e8af2353b39a79ea8f355d9b49f1ba06342[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Mon Jul 10 16:43:17 2023 +0530
+
+    added buysubscription
+
+[33mcommit 9ce60ecf74bef511f5a8139bec0fc5e476126839[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sun Jul 9 20:30:16 2023 +0530
+
+    added delete Lecture functionality
+
+[33mcommit a38baef84e78d74de60de80d3e8b874a74bada21[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sun Jul 9 19:11:11 2023 +0530
+
+    added add lecture feature
+
+[33mcommit 4bad872316c6581cea01f219af67be7c07eac1a5[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sun Jul 9 18:49:13 2023 +0530
+
+    added createcourse with fileupload
+
+[33mcommit 4663169cd4133babb5444e1ad2682be8ad8bde53[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sun Jul 9 18:20:04 2023 +0530
+
+    remove from playlist also added now added register with fileupload,(don't forget to add singleUpload middleware on userRoute)
+
+[33mcommit 9f64091e650bdd530878393955e0701a9a9edbb5[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sun Jul 9 13:46:32 2023 +0530
+
+    added add to playlist functionality
+
+[33mcommit 1d8f3df20740995a0602908065b7e31734306921[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sun Jul 9 12:42:09 2023 +0530
+
+    added get all courses with filters (using regex)
+
+[33mcommit bbde67ffa4ff3757878e78becdc33ea2ebd65ec9[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 19:57:54 2023 +0530
+
+    added reset password (remember forget and reset would work simultaneously
+
+[33mcommit e091d20b54e9b3cd686f76b351a4ad946421d6a6[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 18:51:37 2023 +0530
+
+    ---14th commit added forgot password , token has been sent to mailtrap; --next[reset password route with token]
+
+[33mcommit eca803a2bd1bf69612bf23193ebe6c8e024a9938[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 18:09:17 2023 +0530
+
+    added changePassword
+
+[33mcommit 5b4fade808ca26c4ba9d81a061fcf235ccd823d6[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 17:02:56 2023 +0530
+
+    added getmy profile
+
+[33mcommit f371f120b7f12a517df697254a84e4fbf0ac313d[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 16:45:34 2023 +0530
+
+    completed login and logout successfully
+
+[33mcommit e73015d5f7c707f2fb1bfbfbf14d591c5c24b5d1[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 16:31:22 2023 +0530
+
+    registered successfully
+
+[33mcommit 4606d96d9fcc60de3ef1db4506d0c78028c9c8da[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 15:33:12 2023 +0530
+
+    add sendToken.js
+
+[33mcommit 883c4cf0c2295810f5bc473f451a3e879a5b44db[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 15:10:29 2023 +0530
+
+    add register login logout (route and controller)  ,[ next dataUri , sendToken]  ---9th commit
+
+[33mcommit 576c5e1faf1a66d586cd00d984f75b0c86d0488c[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 14:46:14 2023 +0530
+
+    add errorHandler-utils ,(Error.js , catchAsyncErrror)
+
+[33mcommit 5b7bb904a073d0a04ff0200cd1d5ac47d2683d0f[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 14:25:23 2023 +0530
+
+    full course model complete
+
+[33mcommit 0d57a4ed3caa0572bd2af48bd8966109867736ea[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 14:22:55 2023 +0530
+
+    half course model complete
+
+[33mcommit 55c76eb23f07f768c796afcbf6de7a51a03a24d4[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 14:17:33 2023 +0530
+
+    usermodel complete ----5th commit
+
+[33mcommit 4b031826fba4c0e4e9eeb9ab97e68809ba10d3ae[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 14:10:20 2023 +0530
+
+    half usermodel complete
+
+[33mcommit 19e12b4531d0c077c340464150b8855c1c7c675b[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 13:46:00 2023 +0530
+
+    database connected , models next  ----3rd commit
+
+[33mcommit 7128df2d6146c68ed486d86a94e3ec5ea30d16b6[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 13:38:51 2023 +0530
+
+    app and server js files initialized
+
+[33mcommit 18d727ad20d882db1832fa6da2226379ff908af0[m
+Author: Bibash Roy <bibhash@gmail.com>
+Date:   Sat Jul 8 13:27:27 2023 +0530
+
+    empty folder

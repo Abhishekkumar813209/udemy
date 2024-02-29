@@ -7,6 +7,8 @@ import Payment from "../models/Payment.js"
 
 
 export const buySubscription = catchAsyncError(async(req,res,next)=>{
+  console.log(req);
+  console.log(req.user);
     const user = await User.findById(req.user._id);
     if(user.role ===1) return next(new ErrorHandler("Admin Can't buy Subscription",401))
 
@@ -28,7 +30,7 @@ export const buySubscription = catchAsyncError(async(req,res,next)=>{
 
     res.status(200).send({
         success:true,
-        subscription:subscription
+        subscriptionId:subscription.id
     })
 })
 

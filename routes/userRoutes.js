@@ -59,7 +59,7 @@ router.route("/removefromplaylist").delete(isAuthenticated,removeFromPlaylist);
 
 //Admin Routes------------
 
-router.route("/admin/users").get(isAuthenticated,authorizeAdmin,getAllUsers)
+router.route("/admin/users").get(getAllUsers)
 
 router.route("/admin/user/:id")
     .get(isAuthenticated,authorizeAdmin,getAllUsers)
